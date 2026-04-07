@@ -1,0 +1,57 @@
+
+A))
+#include <iostream>
+#include <stack>
+#include <unordered_map>
+using namespace std;
+
+bool isValid(string s) {
+    stack<char> st;
+
+    unordered_map<char, char> mp = {
+        {')', '('},
+        {'}', '{'},
+        {']', '['}
+    };
+
+    for (char c : s) {
+        if (mp.count(c)) {  // if closing bracket
+            if (st.empty() || st.top() != mp[c])
+                return false;
+            st.pop();
+        } else {
+            st.push(c);
+        }
+    }
+
+    return st.empty();
+}
+
+int main() {
+    string s = "{[()]}";
+    cout << (isValid(s) ? "Valid" : "Invalid");
+}
+B,))#include <iostream>
+#include <stack>
+#include <unordered_set>
+using namespace std;
+
+string removeDuplicates(string s) {
+    stack<char> st;
+    unordered_set<char> seen;
+
+    for (char c : s) {
+        if (seen.find(c) == seen.end()) {
+            st.push(c);
+            seen.insert(c);
+        }
+    }
+
+    string result = "";
+    while (!st.empty()) {
+        result = st.top() + result;
+        st.pop();
+    }
+
+    return result;
+}
