@@ -1,0 +1,78 @@
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int A[3][3], B[3][3];
+    int add[3][3], mul[3][3] = {0};
+
+    // Input Matrix A
+    cout << "Enter elements of Matrix A (3x3):\n";
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            cin >> A[i][j];
+        }
+    }
+
+    // Input Matrix B
+    cout << "\nEnter elements of Matrix B (3x3):\n";
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            cin >> B[i][j];
+        }
+    }
+
+    // Matrix Addition
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            add[i][j] = A[i][j] + B[i][j];
+        }
+    }
+
+    // Matrix Multiplication
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            for(int k = 0; k < 3; k++) {
+                mul[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+
+    // Display Matrix A
+    cout << "\nMatrix A:\n";
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            cout << A[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    // Display Matrix B
+    cout << "\nMatrix B:\n";
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            cout << B[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    // Display Addition Result
+    cout << "\nMatrix Addition (A + B):\n";
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            cout << add[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    // Display Multiplication Result
+    cout << "\nMatrix Multiplication (A x B):\n";
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            cout << mul[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
